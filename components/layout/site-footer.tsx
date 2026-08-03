@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Mail, Phone } from "lucide-react";
 
+import { BrandMark } from "@/components/shared/brand-mark";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import {
   DEFAULT_WHATSAPP_MESSAGE,
@@ -26,9 +27,7 @@ export function SiteFooter() {
       <div className="container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-xl bg-gold-sheen font-display text-lg font-bold text-white">
-              A
-            </span>
+            <BrandMark className="shadow-none" />
             <span className="font-display text-lg font-semibold">{site.name}</span>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-white/60">
@@ -106,7 +105,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="container flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/50 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {site.name}. {site.tagline}.
+            © {new Date().getFullYear()} · {site.tagline}
           </p>
           <p>Designed &amp; developed for fashion businesses across India.</p>
         </div>

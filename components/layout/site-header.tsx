@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { BrandMark } from "@/components/shared/brand-mark";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import {
   DEFAULT_WHATSAPP_MESSAGE,
@@ -45,15 +46,13 @@ export function SiteHeader() {
     >
       <div className="container flex h-[72px] items-center justify-between gap-4">
         <a href="#top" className="group flex items-center gap-3">
-          <span className="flex size-10 items-center justify-center rounded-xl bg-gold-sheen font-display text-lg font-bold text-white shadow-gold">
-            A
-          </span>
+          <BrandMark />
           <span className="flex flex-col leading-none">
             <span className="font-display text-base font-semibold tracking-tight text-ink">
               {site.name}
             </span>
             <span className="mt-1 hidden text-[0.65rem] font-medium uppercase tracking-[0.18em] text-ink-muted sm:block">
-              Fashion Web Design
+              For Fashion &amp; Apparel Businesses
             </span>
           </span>
         </a>

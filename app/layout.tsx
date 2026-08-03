@@ -33,14 +33,14 @@ const keywords = [
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | ${site.tagline}`,
+    // Leads with the offer rather than a brand name, which does not exist yet.
+    default: `${site.tagline} | Custom Design For Stores, Boutiques & Brands`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords,
   applicationName: site.name,
-  authors: [{ name: site.name }],
-  creator: site.name,
+  // `authors` / `creator` intentionally omitted until a business name exists.
   openGraph: {
     type: "website",
     locale: "en_IN",

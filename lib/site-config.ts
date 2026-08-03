@@ -18,7 +18,12 @@ export const DEFAULT_WHATSAPP_MESSAGE =
   "Hi! I run a fashion / apparel business and I'd like a free website demo.";
 
 export const site = {
-  name: "Atelier Web Studio",
+  /**
+   * No company name yet — this generic descriptor stands in wherever a brand
+   * name would appear (header, footer, page title, structured data). Replace
+   * this single value with the real business name when it is decided.
+   */
+  name: "Fashion Web Design",
   tagline: "Websites For Fashion & Apparel Businesses",
   email: "shrishkumar18032004@gmail.com",
   url: "https://shrishkumar111222.github.io/landingpageFashion-Apparel/",

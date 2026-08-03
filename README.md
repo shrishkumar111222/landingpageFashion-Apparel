@@ -96,11 +96,29 @@ silently discards bot submissions.
 
 ## Deployment (GitHub Pages)
 
+### ⚠️ Required one-time setup
+
+**GitHub Pages must be enabled by the repository owner before the first
+deployment can succeed.** Go to:
+
+> **Settings → Pages → Build and deployment → Source → select "GitHub Actions"**
+
+This cannot be automated. The workflow asks the API to enable Pages
+(`enablement: true`), but the `GITHUB_TOKEN` available to Actions is not
+permitted to create a Pages site, so the job fails with
+*"Resource not accessible by integration"* until the setting is flipped by hand.
+
+Once Pages is enabled, re-run the workflow (**Actions → Deploy to GitHub Pages →
+Re-run jobs**) or push any commit to `main`. The site then publishes to:
+
+```
+https://shrishkumar111222.github.io/landingpageFashion-Apparel/
+```
+
+### How it works
+
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the
 static export and publishes it.
-
-One-time setup: **Settings → Pages → Build and deployment → Source →
-GitHub Actions**.
 
 The site is served from `/<repo-name>/`, so the workflow passes `BASE_PATH` into
 the build. Local development runs from the root and needs no configuration.

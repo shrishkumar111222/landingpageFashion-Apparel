@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 6%;
+
+    --primary: 240 10% 6%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 33% 96%;
+    --secondary-foreground: 240 10% 6%;
+
+    --muted: 30 20% 96%;
+    --muted-foreground: 240 5% 42%;
+
+    --accent: 34 41% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 16% 90%;
+    --input: 30 16% 88%;
+    --ring: 34 41% 49%;
+
+    --radius: 0.9rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the fixed header. */
+    scroll-padding-top: 5.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-gold-200 text-ink;
+  }
+}
+
+@layer components {
+  /* Small uppercase label that sits above every section heading. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-gold-600;
+  }
+
+  /* Hairline grid used behind light sections for a subtle editorial texture. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(16, 16, 20, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 16, 20, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gold-sheen bg-clip-text text-transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

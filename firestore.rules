@@ -1,0 +1,39 @@
+rules_version = '2';
+
+// Deploy with: firebase deploy --only firestore:rules
+//
+// The landing page is a static site with no backend, so the browser writes
+// leads directly. These rules make the `leads` collection append-only for the
+// public: anyone may create a lead, nobody may read, update or delete one
+// without going through the Firebase console or an authenticated admin.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /leads/{leadId} {
+      allow create: if isValidLead(request.resource.data);
+      allow read, update, delete: if false;
+    }
+
+    // Everything else stays closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+function isValidLead(data) {
+  return data.keys().hasOnly([
+           'businessName', 'ownerName', 'phone', 'whatsapp', 'email',
+           'businessType', 'city', 'currentWebsite', 'message',
+           'source', 'pageUrl', 'createdAt'
+         ])
+         && data.businessName is string && data.businessName.size() > 0
+         && data.businessName.size() < 200
+         && data.ownerName is string && data.ownerName.size() > 0
+         && data.ownerName.size() < 200
+         && data.phone is string && data.phone.size() > 0
+         && data.phone.size() < 25
+         && data.businessType is string && data.businessType.size() < 100
+         && data.city is string && data.city.size() < 100
+         && data.message is string && data.message.size() < 2000;
+}

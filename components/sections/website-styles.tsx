@@ -1,64 +1,46 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, Lock } from "lucide-react";
 
-import { GarmentArt, type GarmentKind } from "@/components/shared/garment-art";
 import { RevealChild, RevealGroup } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { demoStyles, type DemoStyle } from "@/lib/site-config";
+import { assetPath } from "@/lib/utils";
 
-const previewGarments: Record<string, GarmentKind[]> = {
-  "family-garments": ["shirt", "dress", "tee"],
-  "luxury-boutique": ["lehenga", "saree", "dress"],
-  "modern-fashion": ["tee", "dress", "shirt"],
-};
-
-/** Miniature site preview rendered from the card's own palette. */
+/**
+ * Real screenshot of the live demo inside a browser frame. The capture is
+ * taller than the window, so hovering pans down the page to reveal more of the
+ * design — skipped entirely when the visitor prefers reduced motion.
+ */
 function DemoPreview({ style }: { style: DemoStyle }) {
-  const garments = previewGarments[style.id] ?? ["dress", "shirt", "saree"];
-
   return (
-    <div className="relative overflow-hidden rounded-xl border border-ink/[0.07] bg-white">
-      <div
-        className="relative px-4 py-6"
-        style={{
-          backgroundImage: `linear-gradient(135deg, ${style.palette.from}, ${style.palette.via} 55%, ${style.palette.to})`,
-        }}
-      >
-        <div className="flex items-center justify-between">
-          <span className="text-[0.5rem] font-bold uppercase tracking-[0.22em] text-white/75">
-            Your Brand
-          </span>
-          <span className="flex gap-1" aria-hidden="true">
-            <span className="h-0.5 w-3 rounded-full bg-white/60" />
-            <span className="h-0.5 w-3 rounded-full bg-white/60" />
-            <span className="h-0.5 w-3 rounded-full bg-white/60" />
-          </span>
+    <div className="relative overflow-hidden rounded-xl border border-ink/[0.07] bg-white shadow-sm">
+      <div className="flex items-center gap-2 border-b border-ink/[0.07] bg-[#F7F5F2] px-3 py-2">
+        <div className="flex gap-1" aria-hidden="true">
+          <span className="size-1.5 rounded-full bg-[#FF5F57]" />
+          <span className="size-1.5 rounded-full bg-[#FEBC2E]" />
+          <span className="size-1.5 rounded-full bg-[#28C840]" />
         </div>
-        <p className="mt-4 font-display text-base leading-tight text-white">
-          New Collection
-        </p>
-        <span className="mt-3 inline-block rounded-full bg-white/90 px-2.5 py-1 text-[0.5rem] font-bold uppercase tracking-wider text-ink">
-          Shop Now
-        </span>
+        <div className="flex flex-1 items-center gap-1.5 rounded bg-white px-2 py-1 text-[0.5rem] text-ink-muted shadow-sm">
+          <Lock className="size-2 text-emerald-600" />
+          <span className="truncate">{style.previewHost}</span>
+        </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-1.5 bg-white p-2.5">
-        {garments.map((garment, index) => (
-          <div
-            key={`${style.id}-${garment}-${index}`}
-            className="flex aspect-[3/4] items-center justify-center rounded-lg bg-[#F6F4F1]"
-          >
-            <GarmentArt
-              kind={garment}
-              className="h-[60%] text-ink/25 transition-transform duration-500 group-hover:scale-110"
-            />
-          </div>
-        ))}
+      <div className="relative aspect-[16/11] overflow-hidden bg-[#F6F4F1]">
+        <Image
+          src={assetPath(style.preview)}
+          alt={`Live website demo — ${style.title}`}
+          width={1440}
+          height={2000}
+          sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 400px"
+          className="absolute inset-x-0 top-0 w-full transition-transform [transition-duration:2200ms] ease-out motion-safe:group-hover:-translate-y-[50.5%]"
+        />
       </div>
     </div>
   );

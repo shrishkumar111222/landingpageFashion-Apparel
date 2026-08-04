@@ -3,9 +3,9 @@
 /.pnp
 .pnp.js
 
-# next.js
-/.next/
-/out/
+# next.js — unanchored so stray nested build dirs are caught too
+.next/
+out/
 next-env.d.ts
 
 # production

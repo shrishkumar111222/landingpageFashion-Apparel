@@ -72,6 +72,10 @@ export type DemoStyle = {
   bestFor: readonly string[];
   href: string;
   badge?: string;
+  /** Screenshot of the live demo, captured at 1440×2000 (see README). */
+  preview: string;
+  /** Host shown in the card's browser chrome. */
+  previewHost: string;
   palette: { from: string; via: string; to: string };
 };
 
@@ -89,6 +93,8 @@ export const demoStyles: readonly DemoStyle[] = [
       "Kids Wear",
     ],
     href: "https://shrishkumar111222.github.io/Family-Garments-Multi-Brand-Fashion-Store/",
+    preview: "/previews/family-garments.jpg",
+    previewHost: "shreefamilygarments.com",
     palette: { from: "#1F3A5F", via: "#4B7BA8", to: "#B0864A" },
   },
   {
@@ -104,6 +110,8 @@ export const demoStyles: readonly DemoStyle[] = [
       "Ethnic Wear Stores",
     ],
     href: "https://shrishkumar111222.github.io/Luxury-Boutique-Bridal-Fashion/",
+    preview: "/previews/luxury-boutique.jpg",
+    previewHost: "maisonvasanti.com",
     palette: { from: "#5B1F3B", via: "#9C4668", to: "#D9BC8B" },
   },
   {
@@ -120,6 +128,8 @@ export const demoStyles: readonly DemoStyle[] = [
     ],
     href: "https://shrishkumar111222.github.io/Modern-Fashion-Store-Gen-Z-Trendy-/",
     badge: "Trending Design",
+    preview: "/previews/modern-fashion.jpg",
+    previewHost: "voltra.store",
     palette: { from: "#111827", via: "#4338CA", to: "#F97316" },
   },
 ] as const;

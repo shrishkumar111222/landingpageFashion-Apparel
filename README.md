@@ -145,6 +145,25 @@ lib/
   utils.ts                cn() helper
 ```
 
+### Demo screenshots
+
+The three portfolio cards show real screenshots of the live demo sites, stored
+in `public/previews/` (1440×2000 JPEG, ~250 KB each). Each card displays a 16:11
+window of the top of the page and pans down on hover to reveal more of the
+design.
+
+Refresh them after redesigning a demo:
+
+```bash
+npm install --no-save playwright
+npx playwright install chromium
+node scripts/capture-previews.mjs
+rm -rf out && npm run build   # stale copies in out/ are not overwritten
+```
+
+Playwright is deliberately not a project dependency — it is only needed for
+this occasional task.
+
 ### Editing content
 
 Nearly all copy lives in `lib/site-config.ts` — headings, trust badges, demo
